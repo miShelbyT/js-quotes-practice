@@ -5,6 +5,12 @@ const quoteList = document.querySelector("#quote-list")
 const newQuoteForm = document.querySelector("#new-quote-form")
 // console.log(newQuoteForm)
 
+const div = document.createElement("div")
+const sortBtn = document.createElement("button")
+sortBtn.textContent = "Quote Sorter"
+sortBtn.className = "btn-success"
+quoteList.prepend(div)
+div.append(sortBtn)
 
 /**********Event Handlers**********/
 function createQuote(event) {
@@ -47,6 +53,7 @@ function deleteQuote(event) {
 
 }
 
+// Likes POST to endpoint '.../likes'
 function addLikes(event) {
   if (event.target.matches(".btn-success")) {
     likeBtn = event.target
@@ -64,7 +71,7 @@ function addLikes(event) {
       body: JSON.stringify({ quoteId: id }),
     })
       .then(response => response.json())
-      .then(console.log)
+      .then(updatedLike => console.log(updatedLike))
   }
 
 }
